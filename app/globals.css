@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
 :root {
+  color-scheme: light;
+
   --background: #ececee;
   --foreground: #0c0c0d;
   --surface: #ffffff;
@@ -22,10 +24,32 @@
   --font-display: var(--font-display);
 }
 
+/* apparition du fond du hero : generait la classe animate-fade-in, qui n'etait
+   definie nulle part */
+@theme {
+  --animate-fade-in: fade-in 0.9s ease-out both;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
 body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* anneau de focus visible partout, au clavier uniquement ; les pastilles noires
+   le surchargent avec focus-visible:outline-background */
+:focus-visible {
+  outline: 2px solid var(--foreground);
+  outline-offset: 3px;
 }
 
 /* les titres melangent les deux familles : la serif ne sert qu'aux passages en italique, d'ou une classe dediee plutot qu'une regle sur h1/h2 */
@@ -34,4 +58,46 @@ body {
   font-style: italic;
   font-weight: 400;
   letter-spacing: -0.01em;
+}
+
+/* halos des blocs : la lumiere vit ici, pas en dur dans les composants */
+.halo-dark {
+  background-image: radial-gradient(
+    ellipse 60% 70% at 50% 0%,
+    rgba(255, 255, 255, 0.08) 0%,
+    transparent 70%
+  );
+}
+
+.halo-light {
+  background-image: radial-gradient(
+    ellipse 70% 60% at 50% 0%,
+    #fafafa 0%,
+    transparent 72%
+  );
+}
+
+/* apparition au scroll, en CSS pur : pas de JS, pas de re-render. Sans
+   support de animation-timeline ou avec mouvement reduit, l'element reste
+   simplement visible. A reserver aux elements courts : la plage d'animation
+   se mesure sur la hauteur de l'element. */
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 55%;
+    }
+  }
 }
