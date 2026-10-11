@@ -21,7 +21,7 @@ const TITRE = "SZ Dev";
 const DESCRIPTION =
   "Studio de développement web et mobile. Applications Next.js, React et " +
   "React Native conçues, développées et déployées de bout en bout. " +
-  "Réponse sous 48h.";
+  "Réponse sous 48 h.";
 
 export const metadata: Metadata = {
   // indispensable : sans metadataBase, les URLs d'images Open Graph restent
@@ -30,8 +30,8 @@ export const metadata: Metadata = {
 
   title: {
     default: TITRE,
-    // les sous-pages n'ecrivent plus que leur nom : "Projets" -> "Projets — SZ Dev"
-    template: "%s — SZ Dev",
+    // les sous-pages n'ecrivent plus que leur nom : "Projets" -> "Projets - SZ Dev"
+    template: "%s - SZ Dev",
   },
   description: DESCRIPTION,
 
@@ -70,7 +70,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="fr"
       className={`${display.variable} ${sans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <a
+          href="#main"
+          className="sr-only focus-visible:not-sr-only focus-visible:fixed focus-visible:left-4 focus-visible:top-4 focus-visible:z-[60] focus-visible:rounded-full focus-visible:bg-foreground focus-visible:px-4 focus-visible:py-2 focus-visible:text-sm focus-visible:font-semibold focus-visible:text-background focus-visible:outline-background"
+        >
+          Aller au contenu
+        </a>
+        {children}
+      </body>
     </html>
   );
 }
