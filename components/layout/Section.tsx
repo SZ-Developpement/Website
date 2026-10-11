@@ -19,8 +19,10 @@ export default function Section({
   padding?: string;
   children: React.ReactNode;
 }) {
+  // scroll-mt : la navbar est fixe, sans marge les titres passent dessous
+  // au saut d'ancre
   return (
-    <section id={id} className={className}>
+    <section id={id} className={`scroll-mt-24 ${className}`}>
       <div
         className={`mx-auto w-full max-w-7xl px-6 ${padding} ${contentClassName}`}
       >

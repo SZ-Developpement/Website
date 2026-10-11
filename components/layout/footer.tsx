@@ -13,13 +13,13 @@ const socialLinks = [
   { label: "LinkedIn", Icon: LinkedinIcon, href: social.linkedin },
 ];
 
-export default function Footer() {
+export default function Footer({ cta = true }: { cta?: boolean }) {
   return (
-    <footer className="mx-auto w-full px-6 pb-6 max-w-7xl flex flex-col gap-4">
-      <BlocCTA />
+    <footer className="mx-auto flex w-full max-w-7xl flex-col gap-4 px-6 pb-6">
+      {cta && <BlocCTA />}
 
       {/* Footer */}
-      <div className="rounded-3xl bg-surface p-8 flex flex-col gap-6">
+      <div className="flex flex-col gap-8 rounded-3xl bg-surface p-8">
         {/* Contenu Footer */}
         <div className="flex flex-col gap-10 sm:flex-row sm:justify-between">
           {/* Texte de présentation */}
@@ -29,21 +29,21 @@ export default function Footer() {
             <span className="text-base font-bold tracking-tight">SZ Dev</span>
 
             {/* Description */}
-            <p className="text-[13px] leading-relaxed text-muted">
+            <p className="text-pretty text-[13px] leading-relaxed text-muted">
               Applications web et mobile, de l&apos;architecture au déploiement,
               sans sous-traiter un maillon.
             </p>
 
-            {/* Réseaux sociaux */}
-            <div className="flex gap-2.5 pt-1">
+            {/* Réseaux sociaux : cible tactile de 40px, icone de 16px */}
+            <div className="-ml-2.5 flex gap-0.5 pt-1">
               {socialLinks.map(({ label, Icon, href }) => (
                 <Link
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={label}
-                  className="text-foreground hover:text-foreground/60 transition-colors duration-300"
+                  aria-label={`${label} (nouvel onglet)`}
+                  className="flex size-10 items-center justify-center rounded-full text-muted transition-colors duration-300 hover:text-foreground"
                 >
                   <Icon size={16} />
                 </Link>
@@ -69,13 +69,13 @@ export default function Footer() {
         </div>
 
         {/* Copyright line */}
-        <div className="flex flex-col gap-2 border-t border-line pt-6 text-[12px] text-muted sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-2 border-t border-line pt-6 text-[13px] text-muted sm:flex-row sm:items-center sm:justify-between">
           <span>© {annee} SZ Dev. Tous droits réservés.</span>
           <span>
             Conçu et développé par{" "}
             <Link
               href="/"
-              className="font-semibold text-foreground transition-colors hover:text-foreground/60"
+              className="font-semibold text-foreground underline-offset-4 hover:underline"
             >
               SZ Dev
             </Link>
@@ -95,20 +95,28 @@ function Colonne({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col gap-2">
-      <span className="text-[13px] font-semibold">{titre}</span>
-      <div className="flex flex-col gap-2">{children}</div>
-    </div>
+    <nav aria-label={titre} className="flex flex-col gap-1">
+      <h3 className="pb-1 text-[13px] font-semibold">{titre}</h3>
+      <ul className="flex flex-col">{children}</ul>
+    </nav>
   );
 }
 
 function Lien({ href, children }: { href: string; children: React.ReactNode }) {
+  const className =
+    "inline-block py-1.5 text-[13px] text-muted transition-colors hover:text-foreground";
+
   return (
-    <Link
-      href={href}
-      className="text-xs text-muted transition-colors hover:text-foreground/60"
-    >
-      {children}
-    </Link>
+    <li>
+      {href.startsWith("mailto:") ? (
+        <a href={href} className={className}>
+          {children}
+        </a>
+      ) : (
+        <Link href={href} className={className}>
+          {children}
+        </Link>
+      )}
+    </li>
   );
 }
