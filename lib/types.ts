@@ -4,6 +4,7 @@ export interface PlanRateCardProps {
   icon: LucideIcon;
   title: string;
   price: number;
+  type?: string;
   desc: string;
   features: string[];
   /** Mise en avant du plan, qui determine la largeur du panneau. */
