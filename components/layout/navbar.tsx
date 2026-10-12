@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { navLinks } from "@/lib/sz-dev";
 import MobileMenu from "./mobile-menu";
+import { navLinks } from "@/lib/data/site";
 
 export default function NavBar() {
   return (

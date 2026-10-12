@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { navLinks, social } from "@/lib/sz-dev";
 import { GitHubIcon } from "../icons/github";
 import { LinkedinIcon } from "../icons/linkedin";
 import BlocCTA from "../others/bloc_cta";
+import { navLinks, social } from "@/lib/data/site";
 
 const annee = new Date().getFullYear();
 

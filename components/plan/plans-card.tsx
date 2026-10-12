@@ -1,5 +1,5 @@
 import { planRate } from "@/lib/data/plans";
-import { social } from "@/lib/sz-dev";
+import { social } from "@/lib/data/site";
 import { PlanProps } from "@/types";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";

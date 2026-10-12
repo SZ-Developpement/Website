@@ -1,6 +1,6 @@
 import Section from "@/components/layout/Section";
-import { services } from "@/lib/sz-dev";
-import { ServiceProps } from "@/lib/types";
+import { services } from "@/lib/data/services";
+import { ServiceProps } from "@/types";
 
 export default function Services() {
   const principal = services.find((service) => service.highlight);
