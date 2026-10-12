@@ -38,6 +38,7 @@ function PlanRateCard({
   icon: Icon,
   title,
   price,
+  type,
   desc,
   features,
   cta,
@@ -57,6 +58,7 @@ function PlanRateCard({
           {/* Prix du plan text qui change de taille selon la largeur de l'écran */}
           <span className="text-[clamp(2rem,3.5vw,2.5rem)] font-extrabold leading-none tracking-[-0.045em]">
             {price.toLocaleString("fr-FR")}&nbsp;€
+            {type && <span className="text-muted"> /{type}</span>}
           </span>
           <p className="mt-1 text-sm leading-relaxed text-muted">{desc}</p>
         </div>
