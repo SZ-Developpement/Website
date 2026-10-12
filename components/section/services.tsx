@@ -8,7 +8,7 @@ export default function Services() {
 
   return (
     <Section id="services" contentClassName="flex flex-col gap-12">
-      <div className="reveal flex flex-col items-center gap-3 text-center">
+      <div className="flex flex-col items-center gap-3 text-center">
         <h2 className="text-balance text-[clamp(1.8rem,4vw,2.6rem)] font-extrabold leading-[1.1] tracking-[-0.035em]">
           Ce que nous{" "}
           <span className="serif text-[1.2em] font-normal">construisons</span>.

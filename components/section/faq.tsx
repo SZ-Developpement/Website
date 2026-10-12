@@ -5,7 +5,7 @@ import { faq } from "@/lib/data/faq";
 export default function Faq() {
   return (
     <Section id="faq" contentClassName="mx-auto flex max-w-3xl flex-col gap-10">
-      <h2 className="reveal text-balance text-center text-[clamp(1.8rem,4vw,2.6rem)] font-extrabold leading-[1.1] tracking-[-0.035em]">
+      <h2 className="text-balance text-center text-[clamp(1.8rem,4vw,2.6rem)] font-extrabold leading-[1.1] tracking-[-0.035em]">
         Les questions qu&apos;on{" "}
         <span className="serif text-[1.2em] font-normal">nous pose</span>.
       </h2>

@@ -6,7 +6,7 @@ export default function Engagements() {
     <Section id="engagements" padding="py-8">
       {/* un seul bloc sombre : halo du CTA + trame de points */}
       <div
-        className="reveal relative overflow-hidden rounded-3xl bg-foreground"
+        className="relative overflow-hidden rounded-3xl bg-foreground"
         style={{
           backgroundImage:
             "radial-gradient(ellipse 60% 90% at 50% 0%, rgba(255,255,255,.1) 0%, transparent 70%), radial-gradient(rgba(255,255,255,.14) 1px, transparent 1.5px)",

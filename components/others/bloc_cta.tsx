@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function BlocCTA() {
   return (
     // Bloc CTA : la derniere occasion de convertir avant la sortie
-    <div className="reveal relative flex flex-col items-center gap-6 overflow-hidden rounded-3xl bg-foreground px-7 py-16 text-center">
+    <div className="relative flex flex-col items-center gap-6 overflow-hidden rounded-3xl bg-foreground px-7 py-16 text-center">
       {/* halo seul, comme la carte de service mise en avant */}
       <div
         aria-hidden
