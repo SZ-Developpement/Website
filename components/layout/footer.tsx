@@ -63,6 +63,10 @@ export default function Footer({ cta = true }: { cta?: boolean }) {
 
             <Colonne titre="Informations">
               <Lien href="/mentions-legales">Mentions légales</Lien>
+              <Lien href="/politique-de-confidentialite">
+                Confidentialité
+              </Lien>
+              <Lien href="/conditions-generales">CGV</Lien>
               <Lien href={`mailto:${social.email}`}>{social.email}</Lien>
             </Colonne>
           </div>
