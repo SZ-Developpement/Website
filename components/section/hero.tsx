@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { currentStatus } from "@/lib/sz-dev";
 import Section from "@/components/layout/Section";
+import { currentStatus } from "@/lib/data/site";
 
 export default function Hero() {
   return (
