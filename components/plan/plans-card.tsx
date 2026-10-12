@@ -1,5 +1,6 @@
-import { planRate, social } from "@/lib/sz-dev";
-import { PlanRateCardProps } from "@/lib/types";
+import { planRate } from "@/lib/data/plans";
+import { social } from "@/lib/sz-dev";
+import { PlanProps } from "@/types";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 
@@ -42,7 +43,7 @@ function PlanRateCard({
   desc,
   features,
   cta,
-}: PlanRateCardProps) {
+}: PlanProps) {
   return (
     <div className="flex w-full flex-col justify-between gap-7 p-7">
       <div className="flex flex-col gap-6">
