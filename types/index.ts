@@ -59,6 +59,13 @@ export interface EtapeProps {
   desc: string;
 }
 
+/** une rubrique d'un document juridique (mentions, confidentialite, CGV) */
+export interface LegalSection {
+  titre: string;
+  paragraphes?: string[];
+  liste?: string[];
+}
+
 export interface FaqProps {
   question: string;
   reponse: string;
