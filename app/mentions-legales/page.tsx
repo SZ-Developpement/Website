@@ -11,14 +11,15 @@ export const metadata: Metadata = {
 };
 
 const lignes: { label: string; valeur: string | null }[] = [
-  { label: "Dénomination", valeur: legal.denomination },
-  { label: "Exploitant", valeur: legal.exploitant },
-  { label: "Forme juridique", valeur: legal.formeJuridique },
+  { label: "Éditeur", valeur: `${legal.exploitant}, ${legal.formeJuridique}` },
+  { label: "Nom commercial", valeur: legal.nomCommercial },
   { label: "SIRET", valeur: legal.siret },
+  { label: "Code APE", valeur: legal.ape },
   { label: "Adresse", valeur: legal.adresse },
   { label: "E-mail", valeur: legal.email },
+  { label: "Téléphone", valeur: legal.telephone },
   { label: "TVA", valeur: legal.tva },
-  { label: "Directeur de la publication", valeur: legal.exploitant },
+  { label: "Directeur de la publication", valeur: legal.directeurPublication },
   {
     label: "Hébergeur",
     valeur: `${hebergeur.nom}, ${hebergeur.adresse} (${hebergeur.site})`,

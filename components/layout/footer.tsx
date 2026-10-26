@@ -2,6 +2,7 @@ import Link from "next/link";
 import { GitHubIcon } from "../icons/github";
 import { LinkedinIcon } from "../icons/linkedin";
 import BlocCTA from "../others/bloc_cta";
+import { legal } from "@/lib/data/legal";
 import { navLinks, social } from "@/lib/data/site";
 
 const annee = new Date().getFullYear();
@@ -74,7 +75,7 @@ export default function Footer({ cta = true }: { cta?: boolean }) {
 
         {/* Copyright line */}
         <div className="flex flex-col gap-2 border-t border-line pt-6 text-[13px] text-muted sm:flex-row sm:items-center sm:justify-between">
-          <span>© {annee} SZ Dev. Tous droits réservés.</span>
+          <span>© {annee} {legal.denomination}. Tous droits réservés.</span>
           <span>
             Conçu et développé par{" "}
             <Link
