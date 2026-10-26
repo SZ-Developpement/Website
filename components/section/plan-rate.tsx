@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Section from "@/components/layout/Section";
-import { legal } from "@/lib/data/legal";
+import { noteTarifs } from "@/lib/data/plans";
 import PlansCard from "../plan/plans-card";
 
 export default function PlanRate() {
@@ -18,10 +18,9 @@ export default function PlanRate() {
 
       <PlansCard />
 
-      {/* tarifs : indicatifs, et mention de TVA des qu'elle est renseignee */}
+      {/* tarifs : indicatifs, avec la mention de TVA de la franchise en base */}
       <p className="text-center text-[13px] text-muted">
-        Tarifs indicatifs en euros, précisés dans un devis.
-        {legal.tva ? ` ${legal.tva}.` : ""}{" "}
+        {noteTarifs}{" "}
         <Link
           href="/conditions-generales"
           className="font-semibold text-foreground underline-offset-4 hover:underline"
