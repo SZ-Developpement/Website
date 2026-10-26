@@ -1,48 +1,35 @@
-import { ServicesCardProps } from "@/types/type";
-import {
-  Code,
-  Smartphone,
-  ServerCog,
-  Database,
-  Cloud,
-  MessageCircleQuestionMark,
-} from "lucide-react";
+import { Globe, LayoutDashboard, Smartphone, Wrench } from "lucide-react";
+import type { ServiceProps } from "@/types";
 
-export const services: ServicesCardProps[] = [
+// Services formules en problemes clients, pas en technologies
+export const services: ServiceProps[] = [
   {
-    icon: Code,
-    title: "Développement web",
-    description:
-      "Applications Next.js et React sur-mesure — de la vitrine à l'outil métier complexe.",
+    icon: Globe,
+    titre: "Site vitrine",
+    probleme: "Être trouvé en ligne",
+    desc: "Votre activité en ligne, rapide et trouvable. Des pages sur mesure, un contenu que vous modifiez vous-même, et le référencement travaillé dès la conception.",
+    tags: ["Next.js", "React", "SEO"],
+    highlight: true,
+  },
+  {
+    icon: LayoutDashboard,
+    titre: "Application web",
+    probleme: "Remplacer vos tableurs",
+    desc: "L'outil qui remplace vos tableurs. Comptes utilisateurs, base de données, espace d'administration, construit autour de votre façon de travailler, pas l'inverse.",
+    tags: ["Next.js", "PostgreSQL", "Stripe"],
   },
   {
     icon: Smartphone,
-    title: "Applications mobile",
-    description:
-      "iOS et Android depuis une seule base de code, avec React Native.",
+    titre: "Application mobile",
+    probleme: "Tenir dans la poche de vos clients",
+    desc: "Disponible sur iOS et Android à partir d'une seule base de code. Un seul développement à payer, une seule application à faire évoluer ensuite.",
+    tags: ["React Native", "Expo"],
   },
   {
-    icon: ServerCog,
-    title: "API & backend",
-    description:
-      "APIs REST, GraphQL ou tRPC, avec authentification et logique métier.",
-  },
-  {
-    icon: Database,
-    title: "Bases de données",
-    description:
-      "Conception de schémas et optimisation de requêtes, SQL et NoSQL.",
-  },
-  {
-    icon: Cloud,
-    title: "DevOps & cloud",
-    description:
-      "CI/CD automatisé, hébergement et déploiement sans interruption.",
-  },
-  {
-    icon: MessageCircleQuestionMark,
-    title: "Conseil technique",
-    description:
-      "Audit de code et d'architecture, accompagnement d'équipes internes.",
+    icon: Wrench,
+    titre: "Reprise de projet",
+    probleme: "Reprendre un projet qui bloque",
+    desc: "Un site qui rame, un prestataire parti sans transmettre, du code que personne ne comprend plus. Audit, reprise en main, remise en état.",
+    tags: ["Audit", "Refonte", "Maintenance"],
   },
 ];

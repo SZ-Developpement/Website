@@ -1,16 +1,30 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  /* config options here */
+  cacheComponents: true,
+  partialPrefetching: true,
+  turbopack: {
+    rules: {
+      "*.css": {
+        loaders: ["@tailwindcss/turbopack"],
+        as: "*.css",
+      },
+    },
+  },
   images: {
-    // les logos de la stack sont des SVG servis depuis /public :
-    // sans ça l'optimiseur d'images refuse le SVG et les logos cassent en silence
-    dangerouslyAllowSVG: true,
-    contentDispositionType: "attachment",
-    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     remotePatterns: [
+      // photo de profil Github
       {
         protocol: "https",
-        hostname: "cdn.simpleicons.org",
+        hostname: "avatars.githubusercontent.com",
+        port: "",
+        pathname: "/**",
+      },
+      // images Open Graph
+      {
+        protocol: "https",
+        hostname: "www.sz-dev.fr",
         port: "",
         pathname: "/**",
       },

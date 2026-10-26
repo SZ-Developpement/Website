@@ -1,126 +1,78 @@
 @import "tailwindcss";
 
-/* next-themes pose class="dark" sur <html> : on branche la variante dessus
-   plutot que sur prefers-color-scheme, sinon le toggle ne pilote rien */
-@custom-variant dark (&:where(.dark, .dark *));
-
 :root {
-  /* barres de defilement et controles natifs suivent le theme */
   color-scheme: light;
-  /* en clair on inverse la logique du sombre : la page est grise, la carte est
-     blanche. Aucune bordure au repos, comme en sombre : la carte est posee sur
-     la page par une ombre d'un pixel, pas decoupee par un trait. */
-  --background: #f5f5f7;
-  --foreground: #0a0a0b;
-  --card: #ffffff;
-  --card-hover: #ffffff;
-  --card-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.03);
-  --grid-line: rgba(0, 0, 0, 0.055);
-}
 
-.dark {
-  color-scheme: dark;
-  --background: #030303;
-  --foreground: #ffffff;
-  --card: #0a0a0b;
-  --card-hover: #0d0d0e;
-  --card-shadow: none;
-  --grid-line: rgba(255, 255, 255, 0.04);
+  --background: #ececee;
+  --foreground: #0c0c0d;
+  --surface: #ffffff;
+  --muted: #5c5c62;
+  --line: rgba(0, 0, 0, 0.08);
+
+  --accent: #0c0c0d;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-hover: var(--card-hover);
-  --shadow-card: var(--card-shadow);
-  --font-sans: var(--font-geist-sans);
-  --font-inter: var(--font-inter);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+}
+
+/* apparition du fond du hero : generait la classe animate-fade-in, qui n'etait
+   definie nulle part */
+@theme {
+  --animate-fade-in: fade-in 0.9s ease-out both;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter);
+  font-family: var(--font-sans), system-ui, sans-serif;
 }
 
-.grid-fade {
-  background-image:
-    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
-  background-size: 40px 40px;
-  mask-image: radial-gradient(
-    ellipse 55% 45% at 50% 0%,
-    black 30%,
-    transparent 100%
+/* anneau de focus visible partout, au clavier uniquement ; les pastilles noires
+   le surchargent avec focus-visible:outline-background */
+:focus-visible {
+  outline: 2px solid var(--foreground);
+  outline-offset: 3px;
+}
+
+/* les titres melangent les deux familles : la serif ne sert qu'aux passages en italique, d'ou une classe dediee plutot qu'une regle sur h1/h2 */
+.serif {
+  font-family: var(--font-display), Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* halos des blocs : la lumiere vit ici, pas en dur dans les composants */
+.halo-dark {
+  background-image: radial-gradient(
+    ellipse 60% 70% at 50% 0%,
+    rgba(255, 255, 255, 0.08) 0%,
+    transparent 70%
   );
 }
 
-/* 3 logos seulement sont monochromes blancs (vercel, sql, apple) : en theme
-   clair on les inverse pour qu'ils deviennent noirs au lieu de disparaitre.
-   Les 47 autres ont leurs propres couleurs et ne sont pas touches. */
-.logo-invert-light {
-  filter: invert(1);
-}
-.dark .logo-invert-light {
-  filter: none;
-}
-
-/* 5. le fond des cartes projet : teintes sombres en theme sombre, teintes
-   pales du meme ton en theme clair, sinon le navy vire au sale sur blanc */
-.project-mesh {
-  background:
-    radial-gradient(
-      circle at 22% 18%,
-      color-mix(in oklab, var(--project-color), white 74%),
-      transparent 60%
-    ),
-    radial-gradient(
-      circle at 82% 88%,
-      color-mix(in oklab, var(--project-color), white 86%),
-      transparent 62%
-    ),
-    var(--card);
-}
-.dark .project-mesh {
-  background:
-    radial-gradient(
-      circle at 22% 18%,
-      color-mix(in oklab, var(--project-color), white 20%),
-      transparent 58%
-    ),
-    radial-gradient(
-      circle at 82% 88%,
-      color-mix(in oklab, var(--project-color), black 30%),
-      transparent 60%
-    ),
-    var(--card);
-}
-
-/* 3. les degrades de marque des membres sont tres satures : sur fond blanc
-   ils vibrent, on les adoucit legerement en theme clair uniquement */
-.brand-gradient {
-  filter: saturate(0.78) brightness(0.94);
-}
-.dark .brand-gradient {
-  filter: none;
-}
-
-.eyebrow {
-  font-size: 13px;
-  font-weight: 500;
-  color: color-mix(in oklab, var(--foreground) 40%, transparent);
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(calc(-100% / var(--repeats, 2)));
-  }
-}
-.animate-marquee {
-  animation: marquee 50s linear infinite;
+.halo-light {
+  background-image: radial-gradient(
+    ellipse 70% 60% at 50% 0%,
+    #fafafa 0%,
+    transparent 72%
+  );
 }

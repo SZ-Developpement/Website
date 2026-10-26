@@ -1,61 +1,43 @@
 import Link from "next/link";
-import { GitHubIcon } from "../icon/github";
-import ThemeToggle from "./themeToggle";
+import MobileMenu from "./mobile-menu";
+import { navLinks } from "@/lib/data/site";
 
 export default function NavBar() {
   return (
-    <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-6 h-16 grid grid-cols-[250px_auto_250px] gap-4 items-center">
-        {/* Gauche */}
-        <div className="flex items-center gap-2.5">
-          <Link href="/#hero" className="text-base font-semibold">
-            SZ Dev
-          </Link>
-        </div>
+    <header className="fixed left-1/2 top-[max(1rem,env(safe-area-inset-top))] z-50 -translate-x-1/2">
+      <nav
+        aria-label="Navigation principale"
+        className="mx-auto flex w-fit items-center gap-6 rounded-full bg-foreground py-1.5 pl-5 pr-1.5 shadow-[0_6px_24px_rgba(0,0,0,0.18)]"
+      >
+        <Link
+          href="/"
+          className="whitespace-nowrap text-sm font-bold tracking-tight text-background focus-visible:outline-background"
+        >
+          SZ Dev
+        </Link>
 
-        {/* Navigation */}
-        <nav className="hidden sm:flex mx-auto items-center gap-1 text-sm text-foreground/45">
-          <ItemNav href="/#projects">Projets</ItemNav>
-          <ItemNav href="/#services">Services</ItemNav>
-          <ItemNav href="/#process">Process</ItemNav>
-          <ItemNav href="/#team">Équipe</ItemNav>
-        </nav>
+        <ul className="hidden items-center gap-5 sm:flex">
+          {navLinks.map((lien) => (
+            <li key={lien.href}>
+              <Link
+                href={lien.href}
+                className="text-[13px] font-medium text-background/60 transition-colors hover:text-background focus-visible:outline-background"
+              >
+                {lien.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
 
-        {/* Droite */}
-        <div className="flex items-center justify-end gap-2">
-          <ThemeToggle />
-          <Link
-            href="https://github.com/SZ-Developpement"
-            target="_blank"
-            className="text-foreground/50 hover:text-foreground transition size-8 flex items-center justify-center"
-          >
-            <GitHubIcon size={18} />
-          </Link>
-          <Link
-            href="/#contact"
-            className="rounded-lg bg-foreground text-background px-3.5 py-1.5 text-sm font-semibold hover:bg-foreground/90 transition"
-          >
-            Démarrer un projet
-          </Link>
-        </div>
-      </div>
+        <Link
+          href="/contact"
+          className="hidden whitespace-nowrap rounded-full bg-surface px-4 py-2 text-[13px] font-bold text-foreground transition-opacity hover:opacity-90 focus-visible:outline-background sm:block"
+        >
+          Démarrer un projet
+        </Link>
+
+        <MobileMenu links={navLinks} />
+      </nav>
     </header>
-  );
-}
-
-function ItemNav({
-  href,
-  children,
-}: {
-  href: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <Link
-      href={href}
-      className="px-3.5 py-1.5 rounded-md hover:text-foreground hover:bg-foreground/5 transition-all duration-200 outline-0 "
-    >
-      {children}
-    </Link>
   );
 }
