@@ -20,7 +20,7 @@ export const faq: FaqProps[] = [
   {
     question: "Pourrai-je modifier le contenu moi-même ?",
     reponse:
-      "Pour un site vitrine, oui : le contenu est pensé pour que vous le modifiiez vous-même, sans nous solliciter à chaque changement.",
+      "Pour un site vitrine, oui : le contenu est pensé pour que vous le modifiiez vous-même, sans me solliciter à chaque changement.",
   },
   {
     question: "Une application mobile fonctionne-t-elle sur iPhone et Android ?",
@@ -35,6 +35,6 @@ export const faq: FaqProps[] = [
   {
     question: "Comment se passe le premier échange ?",
     reponse:
-      "Vous remplissez le formulaire de contact avec votre projet, votre budget et votre délai. Nous vous répondons sous 48 h pour en discuter.",
+      "Vous remplissez le formulaire de contact avec votre projet, votre budget et votre délai. Je vous réponds sous 48 h pour en discuter.",
   },
 ];

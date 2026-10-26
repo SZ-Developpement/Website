@@ -2,13 +2,15 @@ import { PlanProps } from "@/types";
 import { Globe, LayoutDashboard, Smartphone } from "lucide-react";
 
 
+/** mention affichee pres des prix (franchise en base de TVA) */
+export const noteTarifs =
+  "Prix nets, TVA non applicable (art. 293 B du CGI). Tarifs indicatifs, devis gratuit.";
+
 export const planRate: PlanProps[] = [
   {
     icon: Globe,
     title: "Site vitrine",
-    // TODO: prix a valider — base sur 5 a 8 jours a 300 €/jour
-    price: 300,
-    type: "jour",
+    price: 900,
     desc: "Votre activité en ligne, livrée clé en main.",
     features: [
       "Jusqu'à 6 pages sur mesure",
@@ -23,8 +25,7 @@ export const planRate: PlanProps[] = [
   {
     icon: LayoutDashboard,
     title: "Application web",
-    // TODO: prix a valider — base sur 15 jours minimum
-    price: 2500,
+    price: 3000,
     desc: "L'outil métier qui remplace vos tableurs.",
     features: [
       "Comptes utilisateurs et rôles",
@@ -39,7 +40,6 @@ export const planRate: PlanProps[] = [
   {
     icon: Smartphone,
     title: "Application mobile",
-    // TODO: prix a valider — base sur 20 jours minimum
     price: 4000,
     desc: "iOS et Android depuis une seule base de code.",
     features: [

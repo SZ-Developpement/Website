@@ -8,22 +8,29 @@ import { social } from "./site";
 // legalComplet). Ne pas inventer de valeur : une mention fausse est pire
 // qu'une mention absente.
 export const legal = {
-  denomination: "SZ Développement",
-  exploitant: "Alexis DE JESUS",
-  formeJuridique: "Entreprise individuelle, micro-entrepreneur",
+  /** dénomination à afficher : exploitant + forme + nom commercial */
+  denomination: "Alexis De Jesus EI – SZ Dev",
+  exploitant: "Alexis De Jesus",
+  nomCommercial: "SZ Dev",
+  formeJuridique: "Entrepreneur individuel (EI) – micro-entreprise",
   /** 14 chiffres, fourni par l'INSEE a l'immatriculation */
-  siret: null as string | null,
+  siret: "131 179 483 00014" as string | null,
+  /** code APE / NAF de l'activite */
+  ape: "6201Z",
   /** adresse professionnelle ou de domiciliation, obligatoire (LCEN art. 6-III) */
-  adresse: "Ile-de-France, France",
+  adresse: "10 rue Maurice Berteaux, 78510 Triel-sur-Seine, France",
   email: social.email,
+  telephone: "07 81 43 00 16",
+  directeurPublication: "Alexis De Jesus",
   /**
    * Mention de TVA. En franchise en base : "TVA non applicable, article 293 B
    * du CGI". Si l'entreprise est assujettie : "TVA FR00 000000000".
    */
-  tva: null as string | null,
+  tva: "TVA non applicable, art. 293 B du CGI" as string | null,
   /**
    * Mediateur de la consommation (obligatoire des qu'on vend a des
    * particuliers) : nom, adresse postale et site web.
+   * TODO : adherer a un mediateur avant de vendre a des particuliers (voir README).
    */
   mediateur: null as string | null,
 };
@@ -35,8 +42,10 @@ export const hebergeur = {
 };
 
 /** date affichee en tete des documents : a changer a chaque revision de fond */
-export const miseAJour = "12 octobre 2026";
+export const miseAJour = "26 octobre 2026";
 
+// Ne sert qu'a l'indexation des trois pages juridiques (robots.index) : un champ
+// manquant (ex. le mediateur) ne touche jamais le reste du site.
 export const legalComplet = Object.values(legal).every((v) => v !== null);
 
 /** valeur manquante dans un texte : visible, jamais silencieuse */

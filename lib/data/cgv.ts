@@ -7,9 +7,12 @@ import { legal, ou } from "./legal";
 const conditions = {
   validiteDevis: "30 jours",
   acompte: "30 %",
+  solde: "70 %",
   delaiPaiement: "30 jours",
-  delaiRecette: "15 jours",
+  delaiRecette: "7 jours",
   garantieCorrectifs: "30 jours",
+  revisionsIncluses: "deux séries",
+  tarifHoraire: "40 €",
 };
 
 // Conditions generales de vente, redigees pour une clientele mixte
@@ -20,7 +23,7 @@ export const cgv: LegalSection[] = [
   {
     titre: "1. Objet et champ d'application",
     paragraphes: [
-      `Les présentes conditions générales de vente régissent les prestations de conception, de développement, de déploiement et de maintenance de sites web, d'applications web et d'applications mobiles fournies par ${legal.denomination}, exploité par ${legal.exploitant} (${legal.formeJuridique}, SIRET ${ou(legal.siret)}), ci-après « le Prestataire », à toute personne, professionnelle ou consommateur, ci-après « le Client ».`,
+      `Les présentes conditions générales de vente régissent les prestations de conception, de développement, de déploiement et de maintenance de sites web, d'applications web et d'applications mobiles fournies par ${legal.denomination} (${legal.exploitant}, ${legal.formeJuridique}, SIRET ${ou(legal.siret)}), ci-après « le Prestataire », à toute personne, professionnelle ou consommateur, ci-après « le Client ».`,
       "Toute commande implique l'acceptation sans réserve des présentes conditions, qui prévalent sur tout document du Client, sauf dérogation écrite du Prestataire.",
     ],
   },
@@ -34,15 +37,16 @@ export const cgv: LegalSection[] = [
   {
     titre: "3. Devis et commande",
     paragraphes: [
-      `Le devis est gratuit et valable ${conditions.validiteDevis}. La commande est formée lorsque le Client retourne le devis signé ou l'accepte expressément par écrit (e-mail compris), et, le cas échéant, verse l'acompte prévu.`,
+      `Le devis est gratuit et valable ${conditions.validiteDevis}. La commande est ferme à réception du devis signé par le Client et de l'acompte prévu.`,
+      `Chaque étape validée par le Client comprend ${conditions.revisionsIncluses} de révisions. Les révisions supplémentaires sont facturées ${conditions.tarifHoraire} de l'heure.`,
       "Toute demande qui sort du périmètre du devis fait l'objet d'un avenant ou d'un nouveau devis avant d'être réalisée.",
     ],
   },
   {
     titre: "4. Prix et paiement",
     paragraphes: [
-      `Les prix sont exprimés en euros. ${ou(legal.tva)}.`,
-      `Sauf mention contraire au devis, un acompte de ${conditions.acompte} est dû à la commande et le solde à la livraison. Les factures sont payables sous ${conditions.delaiPaiement} à compter de leur date d'émission, par virement.`,
+      `Les prix sont nets et exprimés en euros. ${ou(legal.tva)}.`,
+      `Sauf échéancier prévu au devis, un acompte de ${conditions.acompte} est dû à la commande et le solde (${conditions.solde}) à la livraison. Les factures sont payables sous ${conditions.delaiPaiement} à compter de leur date d'émission, par virement. Aucun escompte n'est accordé pour paiement anticipé.`,
       "Pour les Clients professionnels, tout retard de paiement entraîne de plein droit des pénalités calculées à trois fois le taux d'intérêt légal ainsi qu'une indemnité forfaitaire de 40 € pour frais de recouvrement (articles L. 441-10 et D. 441-5 du Code de commerce), sans préjudice d'une indemnisation complémentaire sur justificatifs.",
       "Le Prestataire peut suspendre la prestation en cas de défaut de paiement après mise en demeure restée sans effet.",
     ],
@@ -51,7 +55,7 @@ export const cgv: LegalSection[] = [
     titre: "5. Délais, livraison et recette",
     paragraphes: [
       "Les délais indiqués au devis sont des délais prévisionnels. Ils supposent que le Client fournisse dans les temps les contenus, accès et validations nécessaires ; tout retard du Client décale d'autant le calendrier.",
-      `La livraison est réalisée par la mise en ligne ou la remise du livrable. Le Client dispose de ${conditions.delaiRecette} pour formuler ses réserves par écrit. Passé ce délai, ou dès la mise en production, le livrable est réputé accepté.`,
+      `La livraison est réalisée par la mise en ligne ou la remise du livrable. Le Client dispose de ${conditions.delaiRecette} pour signaler les anomalies par écrit. Passé ce délai, la livraison est réputée acceptée.`,
     ],
   },
   {
@@ -66,9 +70,9 @@ export const cgv: LegalSection[] = [
   {
     titre: "7. Propriété intellectuelle",
     paragraphes: [
-      "Après paiement intégral du prix, le Prestataire cède au Client les droits d'exploitation sur les développements spécifiques réalisés pour lui, pour le monde entier et pour la durée légale de protection. Le code source est remis au Client avec le livrable.",
-      "Les bibliothèques, frameworks et composants tiers restent soumis à leurs propres licences. Les outils, méthodes et composants génériques préexistants du Prestataire demeurent sa propriété, le Client bénéficiant d'un droit d'usage non exclusif dans le cadre du projet.",
-      "Sauf opposition écrite du Client, le Prestataire peut mentionner la réalisation à titre de référence.",
+      "Les droits sur les livrables sont cédés au Client après paiement intégral du prix, pour le monde entier et pour la durée légale de protection. Le code source est remis au Client avec le livrable.",
+      "Les composants génériques et les composants open source restent soumis à leur propre licence ; les composants génériques préexistants du Prestataire demeurent sa propriété, le Client bénéficiant d'un droit d'usage non exclusif dans le cadre du projet.",
+      "Sauf refus écrit du Client, le Prestataire peut citer le projet dans son portfolio.",
     ],
   },
   {
@@ -94,7 +98,7 @@ export const cgv: LegalSection[] = [
   {
     titre: "11. Données personnelles",
     paragraphes: [
-      "Le traitement des données personnelles du Client est décrit dans la politique de confidentialité du site. Lorsque le livrable traite les données des utilisateurs du Client, ce dernier en est le responsable de traitement et reste tenu de ses obligations au titre du RGPD.",
+      "Le traitement des données personnelles du Client est décrit dans la politique de confidentialité du site. Lorsque le Prestataire traite des données personnelles pour le compte du Client, il agit en qualité de sous-traitant au sens du RGPD et le Client en est le responsable de traitement.",
     ],
   },
   {
@@ -112,7 +116,7 @@ export const cgv: LegalSection[] = [
   {
     titre: "14. Droit de rétractation (consommateurs)",
     paragraphes: [
-      "Le Client consommateur, ou professionnel dans les conditions de l'article L. 221-3 du Code de la consommation, dispose d'un délai de 14 jours à compter de la conclusion du contrat pour se rétracter, sans avoir à justifier de motif, en le notifiant clairement par e-mail au Prestataire.",
+      "Le Client consommateur, ou professionnel dans les conditions de l'article L. 221-3 du Code de la consommation, dispose d'un délai de 14 jours (article L. 221-18 du Code de la consommation) à compter de la conclusion du contrat pour se rétracter, sans avoir à justifier de motif, en le notifiant clairement par e-mail au Prestataire.",
       "Si le Client demande que la prestation commence avant la fin de ce délai, il règle une somme proportionnelle à la part déjà exécutée. Le droit de rétractation ne peut plus être exercé une fois la prestation pleinement exécutée avec son accord préalable exprès et sa renonciation, ni pour un service entièrement personnalisé selon ses spécifications (article L. 221-28 du Code de la consommation).",
     ],
   },
@@ -127,7 +131,7 @@ export const cgv: LegalSection[] = [
     titre: "16. Droit applicable et litiges",
     paragraphes: [
       "Les présentes conditions sont soumises au droit français. En cas de litige, les parties recherchent d'abord une solution amiable.",
-      "À défaut, pour les Clients professionnels, les tribunaux compétents sont ceux du ressort du siège du Prestataire. Les Clients consommateurs bénéficient des règles légales de compétence qui leur sont applicables.",
+      "À défaut, pour les Clients professionnels, les tribunaux compétents sont ceux du ressort du domicile du Prestataire. Les Clients consommateurs bénéficient des règles légales de compétence qui leur sont applicables.",
     ],
   },
 ];

@@ -39,16 +39,12 @@ export interface PlanProps {
   cta: "devis" | "commande";
 }
 
-export interface MembreProps {
-  name: string;
-  /** pseudo sans le @ */
-  pseudo?: string;
-  role: string;
-  avatar: string;
-  bio: string;
-  github?: string;
-  linkedin?: string;
-  portfolio?: string;
+/** section "A propos" : une seule personne, pas d'equipe */
+export interface AProposProps {
+  /** paragraphes de presentation ; vide = la section n'est pas affichee */
+  texte: string[];
+  /** chemin d'une photo dans public/, ou null */
+  photo: { src: string; alt: string } | null;
 }
 
 export interface EtapeProps {

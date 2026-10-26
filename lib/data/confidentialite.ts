@@ -9,18 +9,18 @@ export const confidentialite: LegalSection[] = [
   {
     titre: "1. Responsable du traitement",
     paragraphes: [
-      `Le responsable du traitement des données personnelles collectées sur ce site est ${legal.denomination}, exploité par ${legal.exploitant} (${legal.formeJuridique}), SIRET ${ou(legal.siret)}, ${ou(legal.adresse)}.`,
+      `Le responsable du traitement des données personnelles collectées sur ce site est ${legal.denomination} (${legal.exploitant}, ${legal.formeJuridique}), SIRET ${ou(legal.siret)}, ${ou(legal.adresse)}.`,
       `Contact pour toute question relative aux données personnelles : ${legal.email}.`,
     ],
   },
   {
     titre: "2. Données collectées",
     paragraphes: [
-      "Nous ne collectons que les données que vous nous transmettez volontairement :",
+      "Je ne collecte que les données que vous me transmettez volontairement :",
     ],
     liste: [
       "via le formulaire de contact : nom, adresse e-mail, type de projet, budget, délai et description de votre projet ;",
-      "par e-mail, si vous nous écrivez directement : votre adresse e-mail et le contenu de votre message.",
+      "par e-mail, si vous m'écrivez directement : votre adresse e-mail et le contenu de votre message.",
     ],
   },
   {
@@ -34,7 +34,7 @@ export const confidentialite: LegalSection[] = [
   {
     titre: "4. Destinataires et sous-traitants",
     paragraphes: [
-      "Vos données sont destinées à l'éditeur du site. Elles ne sont ni vendues ni cédées à des tiers à des fins commerciales. Pour fonctionner, le site s'appuie sur des prestataires techniques qui les traitent pour notre compte :",
+      "Vos données sont destinées à l'éditeur du site. Elles ne sont ni vendues ni cédées à des tiers à des fins commerciales. Pour fonctionner, le site s'appuie sur des prestataires techniques qui les traitent pour mon compte :",
     ],
     liste: [
       `${hebergeur.nom} : hébergement du site ;`,
@@ -60,7 +60,7 @@ export const confidentialite: LegalSection[] = [
     titre: "7. Vos droits",
     paragraphes: [
       "Vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation et d'opposition au traitement de vos données, ainsi que d'un droit à la portabilité et du droit de définir des directives relatives au sort de vos données après votre décès.",
-      `Pour exercer ces droits, écrivez à ${legal.email}. Nous répondons dans un délai d'un mois. Un justificatif d'identité peut vous être demandé en cas de doute raisonnable.`,
+      `Pour exercer ces droits, écrivez à ${legal.email}. Je réponds dans un délai d'un mois. Un justificatif d'identité peut vous être demandé en cas de doute raisonnable.`,
       "Si vous estimez que vos droits ne sont pas respectés, vous pouvez introduire une réclamation auprès de la CNIL (cnil.fr, 3 place de Fontenoy, TSA 80715, 75334 Paris Cedex 07).",
     ],
   },
