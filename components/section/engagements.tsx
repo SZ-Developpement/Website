@@ -13,7 +13,7 @@ export default function Engagements() {
           backgroundSize: "100% 100%, 22px 22px",
         }}
       >
-        <h2 className="sr-only">Nos engagements</h2>
+        <h2 className="sr-only">Mes engagements</h2>
 
         <dl className="relative grid grid-cols-2 lg:grid-cols-4">
           {engagements.map(({ valeur, libelle, accent }, index) => (

@@ -10,8 +10,8 @@ export default function Services() {
     <Section id="services" contentClassName="flex flex-col gap-12">
       <div className="flex flex-col items-center gap-3 text-center">
         <h2 className="text-balance text-[clamp(1.8rem,4vw,2.6rem)] font-extrabold leading-[1.1] tracking-[-0.035em]">
-          Ce que nous{" "}
-          <span className="serif text-[1.2em] font-normal">construisons</span>.
+          Ce que je{" "}
+          <span className="serif text-[1.2em] font-normal">construis</span>.
         </h2>
         <p className="max-w-lg text-pretty text-sm leading-relaxed text-muted sm:text-[15px]">
           Quatre façons de travailler ensemble, du site vitrine à la reprise

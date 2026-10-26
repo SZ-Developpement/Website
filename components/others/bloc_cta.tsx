@@ -21,7 +21,7 @@ export default function BlocCTA() {
           tête&nbsp;?
         </h2>
         <p className="text-pretty text-sm text-background/70">
-          Dites-nous ce que vous voulez construire. Réponse sous 48&nbsp;h, sans
+          Dites-moi ce que vous voulez construire. Réponse sous 48&nbsp;h, sans
           engagement.
         </p>
       </div>

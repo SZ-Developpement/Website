@@ -28,7 +28,7 @@ export default function Method() {
             </h2>
             <p className="max-w-sm text-pretty text-sm leading-relaxed text-background/70">
               Chaque projet suit les mêmes étapes, pour que vous sachiez
-              toujours où nous en sommes.
+              toujours où j&apos;en suis.
             </p>
           </div>
 
