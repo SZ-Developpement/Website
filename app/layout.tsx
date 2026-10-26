@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Instrument_Serif, Inter } from "next/font/google";
+import { SITE_URL } from "@/lib/data/site";
 import "./globals.css";
 
 /** serif haute-graisse, reservee aux titres en italique */
@@ -16,7 +17,7 @@ const sans = Inter({
   variable: "--font-sans",
 });
 
-const SITE = "https://www.sz-dev.fr";
+const SITE = SITE_URL;
 const TITRE = "SZ Dev";
 const DESCRIPTION =
   "Studio de développement web et mobile. Applications Next.js, React et " +
