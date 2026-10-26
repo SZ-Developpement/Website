@@ -68,7 +68,7 @@ export async function envoyerContact(
   if (!cle) {
     return {
       status: "error",
-      message: `L'envoi n'est pas disponible pour le moment. Écrivez-nous directement à ${social.email}.`,
+      message: `L'envoi n'est pas disponible pour le moment. Écrivez-moi directement à ${social.email}.`,
       values,
     };
   }
@@ -105,7 +105,7 @@ export async function envoyerContact(
   } catch {
     return {
       status: "error",
-      message: `L'envoi a échoué. Réessayez, ou écrivez-nous à ${social.email}.`,
+      message: `L'envoi a échoué. Réessayez, ou écrivez-moi à ${social.email}.`,
       values,
     };
   }
