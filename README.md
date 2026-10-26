@@ -1,9 +1,22 @@
 # SZ Dev — site
 
-Site vitrine de SZ Développement. Next.js 16 · React 19 · Tailwind 4 · TypeScript.
+Site vitrine de Alexis De Jesus EI – SZ Dev (micro-entreprise, une seule personne). Next.js 16 · React 19 · Tailwind 4 · TypeScript.
 
 > **État : refonte en cours.** Le site est reconstruit depuis zéro sur `v-pro`
 > avec un positionnement commercial. L'ancienne version reste sur `v-beta`.
+
+## À faire avant la mise en ligne
+
+- [ ] **Médiateur de la consommation** : adhérer à un médiateur avant de vendre
+      à des particuliers, puis renseigner `legal.mediateur` dans
+      `lib/data/legal.ts`. Tant qu'il est `null`, `legalComplet` est faux et les
+      trois pages juridiques restent en `noindex` (et hors sitemap) ; le reste
+      du site n'est pas touché.
+- [ ] **Texte « À propos »** : renseigner `lib/data/apropos.ts` (texte, photo).
+      Vide, la section n'est pas affichée.
+- [ ] **Variables Vercel** : `RESEND_API_KEY` (et `CONTACT_FROM`, `CONTACT_TO`),
+      voir `.env.example`.
+- [ ] **Domaine** `www.sz-dev.fr` rattaché au projet Vercel.
 
 ---
 
@@ -16,7 +29,7 @@ Lire ce tableau avant de changer de branche : du travail a déjà été perdu ic
 | ----------------- | ----------------------------------------------------------------- |
 | `main`            | Version restructurée (`src/`), design terminal, formulaire Resend |
 | `v-pro`           | **Branche active** — refonte marketing, repart d'une base vierge  |
-| `v-beta`          | Version sobre + thème clair/sombre + fiches membres               |
+| `v-beta`          | Version sobre + thème clair/sombre + version d'origine               |
 | `v-test`          | Bac à sable                                                       |
 | `feat/auth-admin` | Espace d'administration                                           |
 
@@ -52,7 +65,7 @@ public/              logos de stack, favicons
 ```
 
 **Modifier le site passe presque toujours par `lib/data/`.** Ajouter un projet,
-un membre ou un service, c'est ajouter une entrée dans le tableau concerné —
+un service ou un tarif, c'est ajouter une entrée dans le tableau concerné —
 jamais toucher au composant qui l'affiche.
 
 ### Lier deux jeux de données
@@ -60,10 +73,10 @@ jamais toucher au composant qui l'affiche.
 Les relations se font par identifiant typé, jamais par nom affiché.
 
 ```ts
-export type TeamSlug = "alexis-djs" | "thomas-mtt";
+export type ServiceSlug = "site-vitrine" | "application-web";
 
-// sur le projet, pas sur le membre : un projet a des contributeurs
-members: TeamSlug[];
+// sur le projet, pas sur le service : un projet relève d'un service
+service: ServiceSlug;
 ```
 
 Une faute de frappe devient alors une erreur de compilation. Lier par titre ou
@@ -102,8 +115,7 @@ Ces règles existent parce que l'inverse a déjà été publié.
 - **Engagements plutôt que compteurs.** « Réponse sous 48h » est une promesse
   tenable dès le premier client ; « 3 projets livrés » dépend du temps.
 - **Voix commerciale sur les pages d'offre** (accueil, services, projets) :
-  ni âge, ni école, ni statut étudiant. **Voix assumée sur les pages équipe et
-  à-propos**, où la jeunesse devient un atout. La jeunesse est la preuve d'un
+  ni âge, ni école, ni statut étudiant. **Voix assumée sur la page à-propos**, où la jeunesse devient un atout. La jeunesse est la preuve d'un
   bénéfice, jamais l'excuse d'un manque.
 - **Mentions légales obligatoires** (LCEN art. 6-III) : dénomination, forme
   juridique, SIRET, siège, hébergeur. Elles vivent dans `lib/data/legal.ts` et
@@ -133,6 +145,9 @@ signifie regénérer les clés chez Neon et Resend.
 | `JWT_SECRET`     | auth    |
 | `RESEND_API_KEY` | Resend  |
 
+Le formulaire de contact lit `RESEND_API_KEY` (et, en option, `CONTACT_FROM`
+et `CONTACT_TO`) : voir `.env.example`.
+
 ---
 
 ## Structure de page visée
@@ -144,7 +159,7 @@ Ordre des sections de la refonte, et ce que chacune doit accomplir.
 3. **Services** — formulés en problèmes clients, pas en technologies
 4. **Étude de cas** — un projet détaillé : problème → solution → résultat
 5. **Méthode** — le cadre de travail, qui rassure en l'absence de références
-6. **Équipe** — les visages derrière le code
+6. **À propos** — la personne derrière le code (micro-entreprise : pas d'équipe)
 7. **Tarifs** — fourchettes, pour filtrer les demandes en amont
 8. **FAQ** — les objections traitées de front
 9. **Contact** — formulaire qualifiant : projet, budget, délai
